@@ -36,6 +36,7 @@ class Header(object):
         """
         assert isinstance(data_type, DataTypeBase), \
             'data_type must be a Ladybug DataType. Got {}'.format(type(data_type))
+        #check condition that unit is none or not
         if unit is None:
             unit = data_type.units[0]
         else:
@@ -83,6 +84,7 @@ class Header(object):
     @property
     def data_type(self):
         """A DataType object."""
+        "it return data type"
         return self._data_type
 
     @property
@@ -145,6 +147,7 @@ class Header(object):
         if self.metadata != {}:
             meta_str = '\n'.join(['{}: {}'.format(key, val)
                                   for key, val in self.metadata.items()])
+            #return datatype, unit , analysis_period, metadata
             return "{} ({})\n{}\n{}".format(
                 self.data_type, self.unit, a_per, meta_str)
         else:
